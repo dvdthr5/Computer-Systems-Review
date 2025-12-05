@@ -278,7 +278,11 @@ Calculating Average Memory Latency: (hit rate)(hit latency) * (miss rate)(miss l
 
 ### Working Sets
 
-A working set at some time t is the set of distinct items that the program has accessed in the past/most recent k operations. It is denoted W(t, k).
+A working set at some time t is the set of distinct memory locations that the program has accessed in the past/most recent k operations. It is denoted W(t, k). It is useful for determining how large to make your cache. 
+
+If the cache is made too small it cannot contain the programs working set, which will lead to a high miss rate and 'thrashing,' where items that are repeatedly accessed are dropped out of the cache.
+
+If the cache is made too large, it will hold more memory addresses than the working set. The extra space in the cache serves no benefit to the user. The hit rate is already at its peak, so by having extra space there will be no benefit to the system, rather it is just wasted resources on the extra space. 
 
 #### Temporal Locality
 
@@ -299,6 +303,10 @@ First in First Out(FIFO) says that when the cache is full, evict the item that h
 #### LRU
 
 Least Recently Used(LRU) says that when an item needs to be evicted, evict the item that was used least recently, or longest ago. This method is much more difficult and inefficient to implement.
+
+#### OPT
+
+The optimal eviction policy is to evict whichever item will be used the furthest in the future. Though optimal, this is impossible, as we cannot see or acurately predict the future. 
 
 ### Time to Live
 
