@@ -226,15 +226,15 @@ To measure the throughput of a system or server, the process is as generally fol
 - Have each send requests to the server
 - Measure the latency of each request
 
-We have two types of clinets, open and closed.
+We have two types of clients, open and closed.
 
 ##### Open Client
 
 An open client generates requests at a fixed rate. 
 
-##### Closed Clinet
+##### Closed Client
 
-A closed clinet generates a new request each time the previous request finishes
+A closed client generates a new request each time the previous request finishes
 
 A latency/throughput graph looks generally constant until the 'knee' of the graph is reached, or the point where the requests come in faster than they can be handled, at which point is tends towards infinity. The 'knee' of the graph is the point where the system acheives its maximum throughput. 
 
