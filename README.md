@@ -292,6 +292,16 @@ A program is likely to access items that it has recently accessed
 
 A program is likely to access items that are 'near' items that it has recently accessed, in regards to address space. 
 
+### Write Back and Write Through Caches
+
+#### Write Back
+
+Save the values to the cache, as the values are evicted, we write these values to the slow storage. 
+
+#### Write Through
+
+We will immediately write to both the cache and the slow storage. 
+
 ### Caching Policies
 
 A caching policy is how the cache decided to evict an item when the cache is full and needs room for a new element. There are two main methods, FIFO and LRU
