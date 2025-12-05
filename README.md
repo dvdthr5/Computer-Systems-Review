@@ -26,7 +26,7 @@ Abstracting means to hide the nonrelevent informtaion from the user. A good abst
 System calls are the interface between a user level program and the OS kernel. User programs cannot directly preform privelledged operations so they request these services through system calls. Common examples are: 
 - Read/Write (IO File) operations -> read(), write(), open(), close()
 - Interprocess Communication -> Pipes, Sockets, Kill()
-- Memory Management -> mmap(), brk(), shmmem()
+- Memory Management -> mmap(), brk(), shm_open()
 - Process Control -> fork(), join(), waitpid(), exec()
 
 ### Processes
