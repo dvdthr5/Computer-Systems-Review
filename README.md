@@ -59,6 +59,15 @@ Sockets are very similar to pipes, though they allow for bidirectional communica
 
 One more interprocess communication method is shared memory. The kernel delegates shared memory in a way that makes both processes think it is their memory. This works by mapping each processes virtaul memory to the same physical pages, which allows for the two processes to share address space. This is omptimal for read only data sets, when the overhead of copying becomes too much. Reading a large file from shared is much cheaper than copying it to the write side of a pipe, tehn copying it to the read side, then copying it to the processes virtaul memory. 
 
+#### Data Plane
+
+Mechanisms that actually do things, such as read() and write()
+
+
+#### Control Plane
+
+Mechanisms that can manage how to use resources or who can do something. Things like socket, pipe, shm_open, malloc
+
 --- 
 
 ## Threads and Concurrency
@@ -70,6 +79,14 @@ A thread is very similar, though also very different from a processs. Both are u
 ### Thread Pools
 
 There are many methods of how to use threads efficiently, one being a **thread pool**. A thread pool has a grouop of worker threads that wait around until they are assingned a task. After completion, they go back to waiting. This is an efficient method for things like serers where burst traffic is possible and tasks need to be completed in the order they are received in. Having teh sleeping workers that wake up when needed removes the oerhead of spawning a new worker per task. 
+
+### Data Parallelism 
+
+Data parallelism involves splitting the data into groups and having different workers handle the different groups. Each worker will preform all the steps from start to finish for that set of data, meaning it preforms the entire task for a subset of the data.
+
+### Task Parallelism
+
+As opposed to data parallelism, task parallelism is splitting up the required tasks and having seperate workers for each task. This means each worker would touch all of the data, but would only do a portion of the entire goal of working with that data. This means it preforms only a subset of the tasks for the entire set of data.
 
 ### Concurrency Issues
 
